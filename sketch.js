@@ -1,19 +1,18 @@
-let balls = [];
-let numBalls = 10;
+let ball;
 
 function setup() {
-  createCanvas(600, 400);
-  noStroke();
-  for (let i = 0; i < numBalls; i++) {
-    balls.push(new Walker(random(width), random(height)));
-  }
+  createCanvas(400, 200);
+
+  ball = new Particle();
 }
 
+
 function draw() {
-  background(0, 30);
-  for (let b of balls) {
-    b.update();
-    b.edges();
-    b.show();
-  }
+  background(220);
+
+  let gravity = createVector(0, 0.3);
+  ball.addForce(gravity);
+
+  ball.update();
+  ball.show();
 }
